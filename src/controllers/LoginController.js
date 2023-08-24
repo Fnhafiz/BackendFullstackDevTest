@@ -17,6 +17,7 @@ class LoginController {
 				},
 			});
 
+			// if email not exist
 			if (!checkEmail) {
 				return res.status(400).json({
 					isError: true,
@@ -31,6 +32,7 @@ class LoginController {
 				checkEmail.password
 			);
 
+			// if password not match
 			if (!validPassword) {
 				return res.status(400).json({
 					isError: true,
@@ -39,6 +41,7 @@ class LoginController {
 				});
 			}
 
+			// if success
 			return res.json({
 				isError: false,
 				message: "Login success",

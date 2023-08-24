@@ -13,6 +13,7 @@ class RegisterController {
 				},
 			});
 
+			// if email already exist
 			if (checkEmail) {
 				return res.status(400).json({
 					isError: true,
@@ -25,6 +26,7 @@ class RegisterController {
 			const salt = await bcrypt.genSalt(10);
 			const hashPassword = await bcrypt.hash(password, salt);
 
+			// create new user on database
 			const newUser = await prisma.prisma.users.create({
 				data: {
 					name: name,
